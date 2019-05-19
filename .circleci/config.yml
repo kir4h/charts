@@ -1,0 +1,18 @@
+version: 2
+jobs:  
+  build:
+    branches:
+      ignore:
+        - gh-pages
+    docker:
+      - image: alpine
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "14:d6:82:94:88:6c:5a:53:6c:7a:f1:97:34:ec:b0:50"
+      - checkout
+      - run:
+          name: charts 
+          environment:
+            - GITHUB_PAGES_REPO: kir4h/charts
+          command: wget -O - https://raw.githubusercontent.com/kir4h/charts/master/publish.sh | sh

@@ -1,0 +1,7 @@
+dpr:
+  enabled: true
+  user: "deployer_ro"
+  server: "art.tupl.com:443"
+  password: "Iqb6xYWNS3BfKdn3Dm99grM6QPNo5O"
+rbac:
+  enabled: true 
