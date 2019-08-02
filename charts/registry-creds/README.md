@@ -51,15 +51,15 @@ Ensure your EC2 instances have the appropriate permissions as described in
 [registry-creds](https://github.com/upmc-enterprises/registry-creds) documentation.
 
 ```console
-helm install --name registry-creds --set ecr.enabled=true --set ecr.awsAccount="myAccount" \
---set ecr.awsRegion="myRegion" kir4h/registry-creds
+helm install --name registry-creds --set-string ecr.enabled=true --set-string ecr.awsAccount="myAccount" \
+--set-string ecr.awsRegion="myRegion" kir4h/registry-creds
 ```
 
 #### Outside AWS
 
 ```console
-helm install --name registry-creds --set ecr.enabled=true --set ecr.awsAccessKeyId="myID" \
---set ecr.awsSecretAccessKey="mySecret"--set ecr.awsAccount="myAccount" --set ecr.awsRegion="myRegion" \
+helm install --name registry-creds --set ecr.enabled=true --set-string ecr.awsAccessKeyId="myID" \
+--set-string ecr.awsSecretAccessKey="mySecret" --set-string ecr.awsAccount="myAccount" --set-string ecr.awsRegion="myRegion" \
 kir4h/registry-creds
 ```
 
