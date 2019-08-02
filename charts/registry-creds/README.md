@@ -130,6 +130,8 @@ Parameter | Description | Default
 `image.pullPolicy` | container image pull policy | `"IfNotPresent"`
 `nameOverride` | override name of app |`""`
 `fullnameOverride` | override full name of app | `""`
+`podLabels` | labels to be added to pods | `{}`
+`podAnnotations` | annotations to be added to pods | `{}`
 `dpr.enabled` | enable the injection of docker private registry credentials | `false`
 `dpr.existingSecretName` | defines an existing secret (in kube-system namespace) containing the credentials| `""`
 `dpr.user` | user for authenticating with docker private registry. Only applicable if dpr.existingSecretName is empty | `""`
