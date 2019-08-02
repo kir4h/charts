@@ -39,8 +39,8 @@ registry-creds will be up and running but useless)
 ### Using Docker Registry Provider
 
 ```console
-helm install --name registry-creds --set dpr.enabled=true --set dpr.user="myUser" --set dpr.password="myPassword" \
---set dpr.server=myregistry:myport kir4h/registry-creds
+helm install --name registry-creds --set dpr.enabled=true --set-string dpr.user="myUser" --set-string dpr.password="myPassword" \
+--set-string dpr.server=myregistry:myport kir4h/registry-creds
 ```
 
 ### Using Elastic Container Registry
@@ -51,15 +51,15 @@ Ensure your EC2 instances have the appropriate permissions as described in
 [registry-creds](https://github.com/upmc-enterprises/registry-creds) documentation.
 
 ```console
-helm install --name registry-creds --set ecr.enabled=true --set ecr.awsAccount="myAccount" \
---set ecr.awsRegion="myRegion" kir4h/registry-creds
+helm install --name registry-creds --set ecr.enabled=true --set-string ecr.awsAccount="myAccount" \
+--set-string ecr.awsRegion="myRegion" kir4h/registry-creds
 ```
 
 #### Outside AWS
 
 ```console
-helm install --name registry-creds --set ecr.enabled=true --set ecr.awsAccessKeyId="myID" \
---set ecr.awsSecretAccessKey="mySecret"--set ecr.awsAccount="myAccount" --set ecr.awsRegion="myRegion" \
+helm install --name registry-creds --set ecr.enabled=true --set-string ecr.awsAccessKeyId="myID" \
+--set-string ecr.awsSecretAccessKey="mySecret" --set-string ecr.awsAccount="myAccount" --set-string ecr.awsRegion="myRegion" \
 kir4h/registry-creds
 ```
 
@@ -114,7 +114,7 @@ kubectl create secret generic registry-creds-dpr -n kube-system \
 Installing the chart:
 
 ```console
-helm install --name registry-creds --set dpr.enabled=true --set dpr.existingSecretName="registry-creds-dpr" \
+helm install --name registry-creds --set dpr.enabled=true --set-string dpr.existingSecretName="registry-creds-dpr" \
 kir4h/registry-creds
 ```
 
