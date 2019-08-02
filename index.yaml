@@ -3,9 +3,9 @@ entries:
   registry-creds:
   - apiVersion: v1
     appVersion: "1.9"
-    created: 2019-05-19T18:05:24.397911535Z
+    created: 2019-08-02T16:32:50.531714584Z
     description: A Helm chart for registry creds
-    digest: 2d712e671fd3aee917ede73ca25084c62e0f1ca99fac1adbf6d67293b6945d7e
+    digest: 0ee65d95b9d3b78b1acf7bc4a1043784c0321c1db43758d26963f5b496d9d642
     home: https://hub.docker.com/r/upmcenterprises/registry-creds
     maintainers:
     - email: 1671935+kir4h@users.noreply.github.com
@@ -16,4 +16,4 @@ entries:
     urls:
     - registry-creds/registry-creds-0.1.0.tgz
     version: 0.1.0
-generated: 2019-05-19T18:05:24.397153195Z
+generated: 2019-08-02T16:32:50.531203678Z
