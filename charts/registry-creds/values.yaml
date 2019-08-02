@@ -7,6 +7,8 @@ image:
 
 nameOverride: ""
 fullnameOverride: ""
+podLabels: {}
+podAnnotations: {}
 
 dpr:
   # dpr.enabled enables the injection of docker private registry credentials
