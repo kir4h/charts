@@ -57,16 +57,20 @@ spec:
                 secretKeyRef:
                   name: {{ default (include "registry-creds.name" . | printf "%s-ecr") .Values.ecr.existingSecretName }}
                   key: aws-account
+            {{- if .Values.ecr.awsRegion }}
             - name: awsregion
               valueFrom:
                 secretKeyRef:
                   name: {{ default (include "registry-creds.name" . | printf "%s-ecr") .Values.ecr.existingSecretName }}
                   key: aws-region
+            {{- end }}
+            {{- if .Values.ecr.awsAssumeRole }}
             - name: aws_assume_role
               valueFrom:
                 secretKeyRef:
                   name: {{ default (include "registry-creds.name" . | printf "%s-ecr") .Values.ecr.existingSecretName }}
                   key: aws-assume-role
+            {{- end }}
             {{- end }}
             {{- if .Values.dpr.enabled }}
             - name: DOCKER_PRIVATE_REGISTRY_PASSWORD
