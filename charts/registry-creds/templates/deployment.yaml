@@ -57,7 +57,7 @@ spec:
                 secretKeyRef:
                   name: {{ default (include "registry-creds.name" . | printf "%s-ecr") .Values.ecr.existingSecretName }}
                   key: aws-account
-            {{- if .Values.ecr.awsRegion }}
+            {{- if or .Values.ecr.awsRegion .Values.ecr.existingSecretName }}
             - name: awsregion
               valueFrom:
                 secretKeyRef:
