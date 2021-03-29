@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   name: "upmcenterprises/registry-creds"
-  tag: "1.9"
+  tag: "1.10"
   pullPolicy: "IfNotPresent"
 
 nameOverride: ""
@@ -50,6 +50,18 @@ gcr:
   applicationDefaultCredentialsJson: ""
   # gcr.url is the URL for google container registry. Only applicable if gcr.existingSecretName is empty
   url: "https://gcr.io"
+
+acr:
+  # acr.enabled enables the injection of azure container registry credentials
+  enabled: false
+  # acr.existingSecretName defines an existing secret (in kube-system namespace) containing the credentials
+  existingSecretName: ""
+  # acr.url defines the url of azure container registry. Only applicable if acr.existingSecretName is empty
+  url: ""
+  # acr.clientId is the client id used to access azure container registry. Only applicable if acr.existingSecretName is empty
+  clientId: ""
+  # acr.password is the client password used to access azure container registry. Only applicable if acr.existingSecretName is empty
+  password: ""
 
 rbac:
   # rbac.enabled enables the usage of RBAC for registry-creds
