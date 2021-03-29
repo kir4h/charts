@@ -89,6 +89,23 @@ spec:
                   name: {{ default (include "registry-creds.name" . | printf "%s-dpr") .Values.dpr.existingSecretName }}
                   key: DOCKER_PRIVATE_REGISTRY_USER
             {{- end }}
+            {{- if .Values.acr.enabled }}
+            - name: ACR_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ default (include "registry-creds.name" . | printf "%s-acr") .Values.acr.existingSecretName }}
+                  key: ACR_URL
+            - name: ACR_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ default (include "registry-creds.name" . | printf "%s-acr") .Values.acr.existingSecretName }}
+                  key: ACR_CLIENT_ID
+            - name: ACR_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ default (include "registry-creds.name" . | printf "%s-acr") .Values.acr.existingSecretName }}
+                  key: ACR_PASSWORD
+            {{- end }}
           {{- if .Values.gcr.enabled }}
           volumeMounts:
             - name: {{ template "registry-creds.name" . }}-gcr

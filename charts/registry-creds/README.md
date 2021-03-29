@@ -148,6 +148,11 @@ Parameter | Description | Default
 `gcr.existingSecretName` | defines an existing secret (in kube-system namespace) containing the credentials| `""`
 `gcr.applicationDefaultCredentialsJson` | JSON representing google cloud credentials. Only applicable if gcr.existingSecretName is empty | `""`
 `gcr.url` | URL for google container registry. Only applicable if gcr.existingSecretName is empty | `"https://gcr.io"`
+`acr.enabled` | enables the injection of azure container registry credentials | `false`
+`acr.existingSecretName` | defines an existing secret (in kube-system namespace) containing the credentials| `""`
+`acr.url` | defines the url of azure container registry| Only applicable if acr.existingSecretName is empty | `""`
+`acr.clientId` | is the client id used to access azure container registry | Only applicable if acr.existingSecretName is empty | `""`
+`acr.password` | is the client password used to access azure container registry | Only applicable if acr.existingSecretName is empty | `""`
 `rbac.enabled` | enables the usage of RBAC for registry-creds (needed for clusters with RBAC enabled) | `true`
 `rbac.existingServiceAccountName` | name of an existing service account to be used for RBAC permissions. If not defined a new service account will be created by the chart | `""`
 `resources.limits`.memory | memory resource limit | `"100Mi"`
