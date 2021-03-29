@@ -47,7 +47,7 @@ helm install --name registry-creds --set dpr.enabled=true --set-string dpr.user=
 
 #### From AWS
 
-Ensure your EC2 instances have the appropriate permissions as described in 
+Ensure your EC2 instances have the appropriate permissions as described in
 [registry-creds](https://github.com/upmc-enterprises/registry-creds) documentation.
 
 ```console
@@ -69,7 +69,7 @@ Create a `custom-values.yaml` file:
 
 ```yaml
 gcr:
-  enabled: false  
+  enabled: false
   applicationDefaultCredentialsJson: |
   {
     "client_id": "myID",
