@@ -10,5 +10,4 @@ since Helm hub was announced having separate repositories aggregated by the hub 
 
 ## Acknowledgements
 
-[Hidetake Iwata](https://github.com/int128) since I've borrowed his `publish.sh`and `.circleci/config.yml` to have
-a functional initial version
+[charts-repo-actions-demo](https://github.com/helm/charts-repo-actions-demo), used to produce this CI flow
