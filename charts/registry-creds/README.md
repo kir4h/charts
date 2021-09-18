@@ -129,6 +129,7 @@ Parameter | Description | Default
 `image.tag`  | container image tag | `"1.9"`
 `image.pullPolicy` | container image pull policy | `"IfNotPresent"`
 `nameOverride` | override name of app |`""`
+`args` | container args |`{}`
 `fullnameOverride` | override full name of app | `""`
 `podLabels` | labels to be added to pods | `{}`
 `podAnnotations` | annotations to be added to pods | `{}`

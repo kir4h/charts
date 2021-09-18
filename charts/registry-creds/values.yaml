@@ -9,6 +9,10 @@ nameOverride: ""
 fullnameOverride: ""
 podLabels: {}
 podAnnotations: {}
+## Container args (using container default if not set)
+## default: null
+args: {}
+  # skip-kube-system: false
 
 dpr:
   # dpr.enabled enables the injection of docker private registry credentials
