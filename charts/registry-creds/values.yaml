@@ -67,6 +67,10 @@ acr:
   # acr.password is the client password used to access azure container registry. Only applicable if acr.existingSecretName is empty
   password: ""
 
+# environment environment variables to add to the container, can be used for HTTP_PROXY settings
+# default: null
+environment: {}
+
 rbac:
   # rbac.enabled enables the usage of RBAC for registry-creds
   enabled: true
