@@ -106,7 +106,7 @@ spec:
                   name: {{ default (include "registry-creds.name" . | printf "%s-acr") .Values.acr.existingSecretName }}
                   key: ACR_PASSWORD
             {{- end }}
-            {{- range $key, $value := .Values.environment }}
+            {{- range $key, $value := .Values.extraEnv }}
             - name: {{ $key | quote }}
               value: {{ $value | quote }}
             {{- end }}
