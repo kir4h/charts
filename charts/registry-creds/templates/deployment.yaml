@@ -106,10 +106,16 @@ spec:
                   name: {{ default (include "registry-creds.name" . | printf "%s-acr") .Values.acr.existingSecretName }}
                   key: ACR_PASSWORD
             {{- end }}
-          {{- range $key, $value := .Values.args }}
+            {{- range $key, $value := .Values.extraEnv }}
+            - name: {{ $key | quote }}
+              value: {{ $value | quote }}
+            {{- end }}
+          {{- if .Values.args }}
           args:
+            {{- range $key, $value := .Values.args }}
             - --{{ $key }}={{ $value }}
-          {{- end }}
+            {{- end }}
+          {{- end}}
           {{- if .Values.gcr.enabled }}
           volumeMounts:
             - name: {{ template "registry-creds.name" . }}-gcr
