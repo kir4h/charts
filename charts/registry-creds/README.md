@@ -1,18 +1,18 @@
 # registry-creds <!-- omit in toc -->
 
-- [Chart Details](#chart-details)
-- [Prerequisites](#prerequisites)
-- [Adding helm repository](#adding-helm-repository)
-- [Installing the Chart](#installing-the-chart)
-  - [Using Docker Registry Provider](#using-docker-registry-provider)
-  - [Using Elastic Container Registry](#using-elastic-container-registry)
-    - [From AWS](#from-aws)
-    - [Outside AWS](#outside-aws)
-  - [Using Google Container Registry](#using-google-container-registry)
-- [Uninstalling the Chart](#uninstalling-the-chart)
-- [Using existing secrets](#using-existing-secrets)
-  - [Using an existing secret for Docker Private Registry](#using-an-existing-secret-for-docker-private-registry)
-- [Configuration](#configuration)
+* [Chart Details](#chart-details)
+* [Prerequisites](#prerequisites)
+* [Adding helm repository](#adding-helm-repository)
+* [Installing the Chart](#installing-the-chart)
+  * [Using Docker Registry Provider](#using-docker-registry-provider)
+  * [Using Elastic Container Registry](#using-elastic-container-registry)
+    * [From AWS](#from-aws)
+    * [Outside AWS](#outside-aws)
+  * [Using Google Container Registry](#using-google-container-registry)
+* [Uninstalling the Chart](#uninstalling-the-chart)
+* [Using existing secrets](#using-existing-secrets)
+  * [Using an existing secret for Docker Private Registry](#using-an-existing-secret-for-docker-private-registry)
+* [Configuration](#configuration)
 
 ## Chart Details
 
@@ -21,7 +21,7 @@ cluster
 
 ## Prerequisites
 
-- Kubernetes 1.9+
+* Kubernetes 1.9+
 
 ## Adding helm repository
 
@@ -122,44 +122,45 @@ kir4h/registry-creds
 
 The following table lists the configurable parameters of this chart and their default values.
 
-Parameter | Description | Default
---- | --- | ---
-`replicaCount` | number of replicas | `1`
-`image.name` | container image repository | `"upmcenterprises/registry-creds"`
-`image.tag`  | container image tag | `"1.9"`
-`image.pullPolicy` | container image pull policy | `"IfNotPresent"`
-`nameOverride` | override name of app |`""`
-`args` | container args |`{}`
-`fullnameOverride` | override full name of app | `""`
-`podLabels` | labels to be added to pods | `{}`
-`podAnnotations` | annotations to be added to pods | `{}`
-`dpr.enabled` | enable the injection of docker private registry credentials | `false`
-`dpr.existingSecretName` | defines an existing secret (in kube-system namespace) containing the credentials| `""`
-`dpr.user` | user for authenticating with docker private registry. Only applicable if dpr.existingSecretName is empty | `""`
-`dpr.server` | hostname/IP Address of the docker private registry. Only applicable if dpr.existingSecretName is empty | `""`
-`dpr.password` | password for authentication with the selected docker private registry. Only applicable if dpr.existingSecretName is empty | `""`
-`ecr.enabled` | enable the injection of elastic container registry credentials | `""`
-`ecr.existingSecretName` | defines an existing secret (in kube-system namespace) containing the credentials| `""`
-`ecr.awsAccessKeyId` | ID of the key used to access ECR. Not needed for machines within AWS. Only applicable if ecr.existingSecretName is empty | `""`
-`ecr.awsSecretAccessKey` | secret of the key used to access ECR. Not needed for machines within AWS. Only applicable if ecr.existingSecretName is empty | `""`
-`ecr.awsAccount` | comma separated list of AWS Account Ids. Only applicable if ecr.existingSecretName is empty | `""`
-`ecr.awsRegion`  | optional AWS region to override the default. Only applicable if ecr.existingSecretName is empty | `""`
-`ecr.awsAssumeRole` | optional role to be assumed by AWS and used to retrieve tokens. Only applicable if ecr.existingSecretName is empty | `""`
-`gcr.enabled` | enables the injection of google container registry credentials | `false`
-`gcr.existingSecretName` | defines an existing secret (in kube-system namespace) containing the credentials| `""`
-`gcr.applicationDefaultCredentialsJson` | JSON representing google cloud credentials. Only applicable if gcr.existingSecretName is empty | `""`
-`gcr.url` | URL for google container registry. Only applicable if gcr.existingSecretName is empty | `"https://gcr.io"`
-`acr.enabled` | enables the injection of azure container registry credentials | `false`
-`acr.existingSecretName` | defines an existing secret (in kube-system namespace) containing the credentials| `""`
-`acr.url` | defines the url of azure container registry| Only applicable if acr.existingSecretName is empty | `""`
-`acr.clientId` | is the client id used to access azure container registry | Only applicable if acr.existingSecretName is empty | `""`
-`acr.password` | is the client password used to access azure container registry | Only applicable if acr.existingSecretName is empty | `""`
-`rbac.enabled` | enables the usage of RBAC for registry-creds (needed for clusters with RBAC enabled) | `true`
-`rbac.existingServiceAccountName` | name of an existing service account to be used for RBAC permissions. If not defined a new service account will be created by the chart | `""`
-`resources.limits`.memory | memory resource limit | `"100Mi"`
-`resources.limits`.cpu | cpui resource limit | `"200m"`
-`resources.requests`.memory | memory resource request | `"50Mi"`
-`resources.requests`.cpu | cpu resource request | `"40m"`
-`tolerations` | List of node taints to tolerate  | `[]`
-`nodeSelector` | Node labels for pod assignment | `{}`
-`affinity` | Node affinity | `{}`
+| Parameter                               | Description                                                                                                                            | Default                            |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| `replicaCount`                          | number of replicas                                                                                                                     | `1`                                |
+| `image.name`                            | container image repository                                                                                                             | `"upmcenterprises/registry-creds"` |
+| `image.tag`                             | container image tag                                                                                                                    | `"1.9"`                            |
+| `image.pullPolicy`                      | container image pull policy                                                                                                            | `"IfNotPresent"`                   |
+| `nameOverride`                          | override name of app                                                                                                                   | `""`                               |
+| `args`                                  | container args                                                                                                                         | `{}`                               |
+| `extraEnv`                              | container environment variables                                                                                                        | `{}`                               |
+| `fullnameOverride`                      | override full name of app                                                                                                              | `""`                               |
+| `podLabels`                             | labels to be added to pods                                                                                                             | `{}`                               |
+| `podAnnotations`                        | annotations to be added to pods                                                                                                        | `{}`                               |
+| `dpr.enabled`                           | enable the injection of docker private registry credentials                                                                            | `false`                            |
+| `dpr.existingSecretName`                | defines an existing secret (in kube-system namespace) containing the credentials                                                       | `""`                               |
+| `dpr.user`                              | user for authenticating with docker private registry. Only applicable if dpr.existingSecretName is empty                               | `""`                               |
+| `dpr.server`                            | hostname/IP Address of the docker private registry. Only applicable if dpr.existingSecretName is empty                                 | `""`                               |
+| `dpr.password`                          | password for authentication with the selected docker private registry. Only applicable if dpr.existingSecretName is empty              | `""`                               |
+| `ecr.enabled`                           | enable the injection of elastic container registry credentials                                                                         | `""`                               |
+| `ecr.existingSecretName`                | defines an existing secret (in kube-system namespace) containing the credentials                                                       | `""`                               |
+| `ecr.awsAccessKeyId`                    | ID of the key used to access ECR. Not needed for machines within AWS. Only applicable if ecr.existingSecretName is empty               | `""`                               |
+| `ecr.awsSecretAccessKey`                | secret of the key used to access ECR. Not needed for machines within AWS. Only applicable if ecr.existingSecretName is empty           | `""`                               |
+| `ecr.awsAccount`                        | comma separated list of AWS Account Ids. Only applicable if ecr.existingSecretName is empty                                            | `""`                               |
+| `ecr.awsRegion`                         | optional AWS region to override the default. Only applicable if ecr.existingSecretName is empty                                        | `""`                               |
+| `ecr.awsAssumeRole`                     | optional role to be assumed by AWS and used to retrieve tokens. Only applicable if ecr.existingSecretName is empty                     | `""`                               |
+| `gcr.enabled`                           | enables the injection of google container registry credentials                                                                         | `false`                            |
+| `gcr.existingSecretName`                | defines an existing secret (in kube-system namespace) containing the credentials                                                       | `""`                               |
+| `gcr.applicationDefaultCredentialsJson` | JSON representing google cloud credentials. Only applicable if gcr.existingSecretName is empty                                         | `""`                               |
+| `gcr.url`                               | URL for google container registry. Only applicable if gcr.existingSecretName is empty                                                  | `"https://gcr.io"`                 |
+| `acr.enabled`                           | enables the injection of azure container registry credentials                                                                          | `false`                            |
+| `acr.existingSecretName`                | defines an existing secret (in kube-system namespace) containing the credentials                                                       | `""`                               |
+| `acr.url`                               | defines the url of azure container registry. Only applicable if acr.existingSecretName is empty                                        | `""`                               |
+| `acr.clientId`                          | is the client id used to access azure container registry. Only applicable if acr.existingSecretName is empty                           | `""`                               |
+| `acr.password`                          | is the client password used to access azure container registry. Only applicable if acr.existingSecretName is empty                     | `""`                               |
+| `rbac.enabled`                          | enables the usage of RBAC for registry-creds (needed for clusters with RBAC enabled)                                                   | `true`                             |
+| `rbac.existingServiceAccountName`       | name of an existing service account to be used for RBAC permissions. If not defined a new service account will be created by the chart | `""`                               |
+| `resources.limits`.memory               | memory resource limit                                                                                                                  | `"100Mi"`                          |
+| `resources.limits`.cpu                  | cpui resource limit                                                                                                                    | `"200m"`                           |
+| `resources.requests`.memory             | memory resource request                                                                                                                | `"50Mi"`                           |
+| `resources.requests`.cpu                | cpu resource request                                                                                                                   | `"40m"`                            |
+| `tolerations`                           | List of node taints to tolerate                                                                                                        | `[]`                               |
+| `nodeSelector`                          | Node labels for pod assignment                                                                                                         | `{}`                               |
+| `affinity`                              | Node affinity                                                                                                                          | `{}`                               |

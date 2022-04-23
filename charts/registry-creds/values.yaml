@@ -16,8 +16,8 @@ args: {}
 
 # Extra container environment variables
 extraEnv: {}
-  #HTTP_PROXY: "http://<host>:<port>"
-  #HTTPS_PROXY: "https://<host>:<port>"
+  # HTTP_PROXY: "http://<host>:<port>"
+  # HTTPS_PROXY: "https://<host>:<port>"
 
 dpr:
   # dpr.enabled enables the injection of docker private registry credentials
