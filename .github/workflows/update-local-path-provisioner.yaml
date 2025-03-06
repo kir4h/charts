@@ -1,0 +1,69 @@
+name: Sync Local Path Provisioner Chart
+
+on:
+  schedule:
+    # Runs once a week, every Monday at 00:00 UTC
+    - cron: '0 0 * * 1'
+  workflow_dispatch:
+
+jobs:
+  sync-and-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: master
+
+      - name: Checkout the upstream repository
+        uses: actions/checkout@v4
+        with:
+          repository: rancher/local-path-provisioner
+          ref: master
+          path: upstream
+
+      - name: Extract upstream version
+        id: version-extract
+        run: |          
+          UPSTREAM_VERSION=$(cat upstream/deploy/chart/local-path-provisioner/Chart.yaml | grep 'version:' | awk '{print $2}')
+          echo "Upstream version: $UPSTREAM_VERSION"
+          echo "$UPSTREAM_VERSION=$UPSTREAM_VERSION" >> $GITHUB_ENV
+
+      - name: Check if the checked out version is different from current one
+        id: version-check
+        run: |          
+          if [ -f "./charts/local-path-provisioner/Chart.yaml" ]; then            
+            CURRENT_VERSION=$(cat charts/local-path-provisioner/Chart.yaml | grep 'version:' | awk '{print $2}')
+            echo "Current version: $CURRENT_VERSION"
+          
+            if [ "$CURRENT_VERSION" != "${{ env.UPSTREAM_VERSION }}" ]; then
+              echo "version_changed=true" >> $GITHUB_ENV
+            else
+              echo "version_changed=false" >> $GITHUB_ENV
+            fi
+          else
+            # If Chart.yaml does not exist, treat it as a new version
+            echo "version_changed=true" >> $GITHUB_ENV
+            echo "Current version: None"
+          fi
+
+      - name: Copy Helm Chart to my repo
+        if: env.version_changed == 'true'
+        run: |
+          mkdir -p ./charts/local-path-provisioner
+          # Copy the chart from upstream repo to the charts folder in the current repo
+          cp -r upstream/deploy/chart/local-path-provisioner/* ./charts/local-path-provisioner/
+
+      - name: Create Pull Request
+        if: env.version_changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          title: "Sync local-path-provisioner Helm chart to version ${{ env.UPSTREAM_VERSION }}"
+          body: "This PR syncs the latest version of the local-path-provisioner chart from the upstream repository to version ${{ env.UPSTREAM_VERSION }}."
+          branch: local-path-provisioner
+          delete-branch: true
+          commit-message: "Sync local-path-provisioner Helm chart to version ${{ env.UPSTREAM_VERSION }}"
+          labels: |
+            automated pr
+          add-paths: |
+            charts/local-path-provisioner/**
