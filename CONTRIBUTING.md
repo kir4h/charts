@@ -1,5 +1,5 @@
 # CONTRIBUTING
 
-* Please create your Pull Requests to the `develop` branch
+* Please create your Pull Requests to the `master` branch
 * Remember to update the chart's `README.md` whenever applicable (e.g: adding or editing parameters)
-* Charts are published when pushing to master
+* Bump version to `Chart.yaml`
