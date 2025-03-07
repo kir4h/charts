@@ -1,0 +1,6 @@
+### Helm template
+# Chart dependencies
+**/charts/*.tgz
+
+# Used in CI to check out remotes
+upstream/**
