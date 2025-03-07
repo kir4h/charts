@@ -27,7 +27,7 @@ jobs:
         run: |          
           UPSTREAM_VERSION=$(cat upstream/deploy/chart/local-path-provisioner/Chart.yaml | grep 'version:' | awk '{print $2}')
           echo "Upstream version: $UPSTREAM_VERSION"
-          echo "$UPSTREAM_VERSION=$UPSTREAM_VERSION" >> $GITHUB_ENV
+          echo "UPSTREAM_VERSION=$UPSTREAM_VERSION" >> $GITHUB_ENV
 
       - name: Check if the checked out version is different from current one
         id: version-check
