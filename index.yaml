@@ -17,6 +17,32 @@ entries:
     urls:
     - https://github.com/kir4h/charts/releases/download/local-path-provisioner-0.0.31/local-path-provisioner-0.0.31.tgz
     version: 0.0.31
+  process-exporter:
+  - apiVersion: v2
+    appVersion: 0.8.5
+    created: "2025-04-14T07:19:39.080963065Z"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: A Helm chart for process-exporter
+    digest: 38f9077d4ba6295bba3ddd7cc80e315088e8881c42a64c02482cd4d10008bf63
+    home: https://github.com/kir4h/charts/tree/master/charts/process-exporter
+    keywords:
+    - prometheus
+    - exporter
+    maintainers:
+    - email: 1671935+kir4h@users.noreply.github.com
+      name: kir4h
+    name: process-exporter
+    sources:
+    - https://github.com/ncabatoff/process-exporter
+    type: application
+    urls:
+    - https://github.com/kir4h/charts/releases/download/process-exporter-1.0.0/process-exporter-1.0.0.tgz
+    version: 1.0.0
   registry-creds:
   - apiVersion: v1
     appVersion: "1.10"
@@ -153,4 +179,4 @@ entries:
     urls:
     - registry-creds/registry-creds-1.0.1.tgz
     version: 1.0.1
-generated: "2025-03-07T08:24:34.57907137Z"
+generated: "2025-04-14T07:19:39.080984255Z"
