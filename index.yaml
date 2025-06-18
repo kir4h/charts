@@ -20,6 +20,31 @@ entries:
   process-exporter:
   - apiVersion: v2
     appVersion: 0.8.5
+    created: "2025-06-18T06:47:14.964461673Z"
+    dependencies:
+    - name: common
+      repository: oci://registry-1.docker.io/bitnamicharts
+      tags:
+      - bitnami-common
+      version: 2.x.x
+    description: A Helm chart for process-exporter
+    digest: 24835489119e8ee07b61d8a3019cdb0456a109b7b8f7369473bd67e6ba796df9
+    home: https://github.com/kir4h/charts/tree/master/charts/process-exporter
+    keywords:
+    - prometheus
+    - exporter
+    maintainers:
+    - email: 1671935+kir4h@users.noreply.github.com
+      name: kir4h
+    name: process-exporter
+    sources:
+    - https://github.com/ncabatoff/process-exporter
+    type: application
+    urls:
+    - https://github.com/kir4h/charts/releases/download/process-exporter-1.0.1/process-exporter-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 0.8.5
     created: "2025-04-14T07:19:39.080963065Z"
     dependencies:
     - name: common
@@ -179,4 +204,4 @@ entries:
     urls:
     - registry-creds/registry-creds-1.0.1.tgz
     version: 1.0.1
-generated: "2025-04-14T07:19:39.080984255Z"
+generated: "2025-06-18T06:47:14.964493944Z"
